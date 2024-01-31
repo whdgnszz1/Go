@@ -20,44 +20,44 @@ func main() {
 	
 		// wantsCheckBalance := choice == 1
 	
-		if choice == 1 {
-			fmt.Println("Your balance is:", accountBalnace)
-		} else if choice == 2 {
-			fmt.Print("Your deposit: ")
-			var depositAmount float64
-			fmt.Scan(&depositAmount)
+		switch choice {
+			case 1:
+				fmt.Println("Your balance is:", accountBalnace)
+			case 2:
+				fmt.Print("Your deposit: ")
+				var depositAmount float64
+				fmt.Scan(&depositAmount)
 	
-			if depositAmount <= 0 {
-				fmt.Println("Invalid amount! Must be greater than 0")
+				if depositAmount <= 0 {
+					fmt.Println("Invalid amount! Must be greater than 0")
+					// return
+					continue
+				}
+		
+				accountBalnace += depositAmount
+				fmt.Println("Balance updated! New amount:", accountBalnace)
+			case 3:
+				fmt.Print("Your withdraw: ")
+				var withdrawAmount float64
+				fmt.Scan(&withdrawAmount)
+		
+				if withdrawAmount <= 0 {
+					fmt.Println("Invalid amount! Must be greater than 0")
+					continue
+				}
+		
+				if withdrawAmount > accountBalnace {
+					fmt.Println("Invalid amount! You can't withdraw more than you have.")
+					continue
+				}
+		
+				accountBalnace -= withdrawAmount
+				fmt.Println("Balance updated! New amount:", accountBalnace)
+			default:
+				fmt.Println("Good bye!")
+				fmt.Println("Thanks for choosing our Bank!")
 				// return
-				continue
-			}
-	
-			accountBalnace += depositAmount
-			fmt.Println("Balance updated! New amount:", accountBalnace)
-		} else if choice == 3 {
-			fmt.Print("Your withdraw: ")
-			var withdrawAmount float64
-			fmt.Scan(&withdrawAmount)
-	
-			if withdrawAmount <= 0 {
-				fmt.Println("Invalid amount! Must be greater than 0")
-				return
-			}
-	
-			if withdrawAmount > accountBalnace {
-				fmt.Println("Invalid amount! You can't withdraw more than you have.")
-				return
-			}
-	
-			accountBalnace -= withdrawAmount
-			fmt.Println("Balance updated! New amount:", accountBalnace)
-		} else  {
-			fmt.Println("Good bye!")
-			// return
-			break
-		} 
-	}
-
-	fmt.Println("Thanks for choosing our Bank!")
+				//break
+		}
+	}	
 }
