@@ -71,7 +71,7 @@ func main() {
 		
 				accountBalnace += depositAmount
 				fmt.Println("Balance updated! New amount:", accountBalnace)
-				writeBalanceToFile(accountBalnace)
+				fileOps.WriteFloatToFile(accountBalnaceFile ,accountBalnace)
 			case 3:
 				fmt.Print("Your withdraw: ")
 				var withdrawAmount float64
@@ -89,7 +89,7 @@ func main() {
 		
 				accountBalnace -= withdrawAmount
 				fmt.Println("Balance updated! New amount:", accountBalnace)
-				writeBalanceToFile(accountBalnace)
+				fileOps.WriteFloatToFile(accountBalnaceFile ,accountBalnace)
 			default:
 				fmt.Println("Good bye!")
 				fmt.Println("Thanks for choosing our Bank!")
@@ -98,3 +98,4 @@ func main() {
 		}
 	}	
 }
+
