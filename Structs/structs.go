@@ -10,7 +10,15 @@ type User struct {
 	lastName string
 	birthDate string
 	createdAt time.Time
+}
 
+func (u *User) outputUserDetails() {
+	fmt.Println(u.firstName, u.lastName, u.birthDate)
+}
+
+func (u *User) clearUserName(){
+	u.firstName = ""
+	u.lastName = ""
 }
 
 func main() {
@@ -27,12 +35,12 @@ func main() {
 		createdAt: time.Now(),
 	}
 
-	outputUserDetails(&appUser)
+	appUser.outputUserDetails()
+	appUser.clearUserName()
+	appUser.outputUserDetails()
 }
 
-func outputUserDetails(u *User) {
-	fmt.Println((*u).firstName, u.lastName, u.birthDate)
-}
+
 
 func getUserData(promptText string) string {
 	fmt.Print(promptText)
